@@ -1,16 +1,15 @@
+'use client'
 import * as React from 'react';
 import { Box, Typography, IconButton, Rating, Grid } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-const BioDetail = ({ id }: { id: string }) => {
+const BioDetail = ({ id, sendMovieIdToParent }: { id: string; sendMovieIdToParent: (id: null) => void }) => {
     const router = useRouter();
 
     const handleBackClick = () => {
-        const newUrl = new URL(window.location.href);
-        newUrl.searchParams.delete('id');
-        router.replace(newUrl.pathname + newUrl.search);
+        sendMovieIdToParent(null);
     };
 
     const [movies, setMovies] = React.useState<any>({

@@ -38,7 +38,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Deploy on Vercel
 
-[link to Vercel](wait)
+[link to Vercel](https://omdb-fe-nextjs.vercel.app/)
 
 ## Result Build node 20.9.0
 

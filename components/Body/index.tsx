@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import {
@@ -62,7 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function BodyList() {
+export default function BodyList({ sendMovieIdToParent }: { sendMovieIdToParent: (id: string) => void }) {
 
     const [expanded, setExpanded] = React.useState(false);
     const currentYear = new Date().getFullYear();
@@ -128,6 +129,10 @@ export default function BodyList() {
         setPage((prevPage) => Math.min(prevPage + 1, totalPages));
     };
 
+    const handleMovieIdFromList = (id: string) => {
+        sendMovieIdToParent(id);
+    };
+
     return (
         <Grid container spacing={2} marginTop={10} sx={{ justifyContent: 'center' }}>
             <Grid item xs={10} sx={{
@@ -183,7 +188,7 @@ export default function BodyList() {
                         {error}
                     </Typography>
                 ) : movies.length > 0 ? (
-                    <ListRowItem movies={movies} />
+                            <ListRowItem movies={movies} sendMovieIdToParent={handleMovieIdFromList} />
                 ) : (
                     <Typography variant="h6" sx={{ mt: 4 }}>No results found</Typography>
                 )}

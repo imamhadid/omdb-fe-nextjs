@@ -5,7 +5,7 @@ import Image from "next/image";
 import Carousel, { carouselClasses } from "./Carousel";
 import { useRouter } from "next/navigation";
 
-const HeaderCarousel = () => {
+const HeaderCarousel = ({ sendMovieIdToParent }: { sendMovieIdToParent: (id: string) => void }) => {
     const [movies, setMovies] = React.useState<any>([{
         Title: `Loading`,
         Poster: "N/A"
@@ -30,7 +30,7 @@ const HeaderCarousel = () => {
     }, []);
 
     const handlePosterClick = (movie: any) => {
-        router.push(`?id=${movie.imdbID}`);
+        sendMovieIdToParent(movie.imdbID);
     };
 
     return (

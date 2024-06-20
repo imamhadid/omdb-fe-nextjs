@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -15,13 +16,14 @@ export default function ListRowItem(Props: {
         Year: string;
         Poster: string;
         Type: string;
-    }[]
+    }[];
+    sendMovieIdToParent: (id: string) => void
 }) {
 
-    const { movies } = Props;
+    const { movies, sendMovieIdToParent } = Props;
     const router = useRouter();
     const handlePosterClick = (movie: any) => {
-        router.push(`?id=${movie.imdbID}`);
+        sendMovieIdToParent(movie.imdbID);
     };
 
     return (
